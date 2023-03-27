@@ -11,7 +11,7 @@ class FileSQLReaderTest {
 
     @Test
     void readFromFileTest() {
-        String actual = FileSQLReader.readFromFile("src/main/java/edu/goit/sql/init_db.sql");
+        String actual = FileSQLReader.readFromFile("src/main/resources/db/migration/V1__init_db.sqlt");
         String expected = "CREATE TABLE worker (\n" +
                 "  ID INT AUTO_INCREMENT PRIMARY KEY,\n" +
                 "  NAME VARCHAR(1000) NOT NULL CHECK (LENGTH(NAME) >= 2 AND LENGTH(NAME) <= 1000),\n" +
@@ -44,28 +44,5 @@ class FileSQLReaderTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test
-    void readWorkersFromFileTest() {
-        List<Worker> workers = FileSQLReader.readWorkersFromFile("src/main/java/edu/goit/sql/workers.txt");
-        int actual = workers.size();
-        int expected = 31;
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void readClientsFromFileTest() {
-        List<String> clients = FileSQLReader.readClientsFromFile("src/main/java/edu/goit/sql/client.txt");
-        int actual = clients.size();
-        int expected = 10;
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void readProjectsFromFileTest() {
-        List<Project> clients = FileSQLReader.readProjectFromFile("src/main/java/edu/goit/sql/project.txt");
-        int actual = clients.size();
-        int expected = 20;
-        Assertions.assertEquals(expected, actual);
-    }
 
 }

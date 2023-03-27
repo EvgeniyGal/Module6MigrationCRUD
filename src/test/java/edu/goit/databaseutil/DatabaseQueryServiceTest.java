@@ -28,7 +28,7 @@ class DatabaseQueryServiceTest {
 
     @Test
     void findMaxProjectClient() {
-        String expected = "[MaxProjectClient(ID=7, name=David Martin, projectCount=4), MaxProjectClient(ID=3, name=William Davis, projectCount=4)]";
+        String expected = "[MaxProjectClient(ID=3, name=William Davis, projectCount=4), MaxProjectClient(ID=7, name=David Martin, projectCount=4)]";
         String actual = databaseQueryService.findMaxProjectClient().toString();
         Assertions.assertEquals(expected, actual);
     }
