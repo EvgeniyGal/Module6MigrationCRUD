@@ -1,26 +1,9 @@
-
-
-buildscript {
-    dependencies {
-        classpath 'com.h2database:h2:2.1.214'
-    }
-}
-
 plugins {
-    id "org.flywaydb.flyway" version "9.16.1"
     id 'java'
 }
 
 group 'edu.goit'
 version '1.0-SNAPSHOT'
-
-
-
-flyway {
-    url = 'jdbc:h2:mem:mydatabese'
-    user = 'sa'
-    password = ''
-}
 
 repositories {
     mavenCentral()
@@ -31,10 +14,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
-    implementation 'com.h2database:h2:1.4.194'
+    implementation 'com.h2database:h2:2.1.214'
+    implementation 'org.flywaydb:flyway-core:9.16.1'
 }
 
 test {
-
     useJUnitPlatform()
 }

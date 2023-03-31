@@ -1,5 +1,7 @@
 package edu.goit.databaseutil;
 
+import org.flywaydb.core.Flyway;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,7 +23,13 @@ public class Database {
             String dbUrl = "jdbc:h2:mem:mydatabese";
 
             try {
-                instance.connection = DriverManager.getConnection(dbUrl,"sa","");
+                instance.connection = DriverManager.getConnection(dbUrl,"sa", "");
+
+                Flyway flyway = Flyway.configure()
+                        .dataSource(dbUrl,"sa", "")
+                        .load();
+                flyway.migrate();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
