@@ -18,10 +18,10 @@ public class Database {
         if (instance == null) {
             instance = new Database();
 
-            String dbUrl = "jdbc:h2:mem:testdb";
+            String dbUrl = "jdbc:h2:mem:mydatabese";
 
             try {
-                instance.connection = DriverManager.getConnection(dbUrl);
+                instance.connection = DriverManager.getConnection(dbUrl,"sa","");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

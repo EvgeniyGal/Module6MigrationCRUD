@@ -11,7 +11,7 @@ class FileSQLReaderTest {
 
     @Test
     void readFromFileTest() {
-        String actual = FileSQLReader.readFromFile("src/main/resources/db/migration/V1__init_db.sqlt");
+        String actual = FileSQLReader.readFromFile("src/main/resources/db/migration/V1__init_db.sql");
         String expected = "CREATE TABLE worker (\n" +
                 "  ID INT AUTO_INCREMENT PRIMARY KEY,\n" +
                 "  NAME VARCHAR(1000) NOT NULL CHECK (LENGTH(NAME) >= 2 AND LENGTH(NAME) <= 1000),\n" +

@@ -1,5 +1,4 @@
-import org.flywaydb.core.Flyway
-import org.h2.jdbcx.JdbcDataSource
+
 
 buildscript {
     dependencies {
@@ -15,9 +14,12 @@ plugins {
 group 'edu.goit'
 version '1.0-SNAPSHOT'
 
+
+
 flyway {
     url = 'jdbc:h2:mem:mydatabese'
     user = 'sa'
+    password = ''
 }
 
 repositories {
@@ -29,33 +31,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
-    implementation 'com.h2database:h2:2.1.214'
+    implementation 'com.h2database:h2:1.4.194'
 }
 
 test {
-    // Set up the H2 database and Flyway
-    doFirst {
-        def dataSource = new JdbcDataSource()
-        dataSource.setURL('jdbc:h2:mem:mydatabese')
-        def flyway = Flyway.configure()
-                .dataSource(dataSource)
-                .load()
-        flyway.migrate()
 
-        // Set the database connection properties for the test environment
-        systemProperty 'spring.datasource.url', 'jdbc:h2:mem:mydatabese'
-        systemProperty 'spring.datasource.username', 'sa'
-        systemProperty 'spring.datasource.password', ''
-    }
-
-    // Clean up the H2 database
-    afterSuite {
-        def dataSource = new JdbcDataSource()
-        dataSource.setURL('jdbc:h2:mem:testdb')
-        def flyway = Flyway.configure()
-                .dataSource(dataSource)
-                .load()
-        flyway.clean()
-    }
     useJUnitPlatform()
 }

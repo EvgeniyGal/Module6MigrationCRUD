@@ -7,8 +7,8 @@ class DatabaseQueryServiceTest {
     private static DatabaseQueryService databaseQueryService;
     @BeforeAll
     static void setUp() {
-        DatabaseInitService.main(new String[0]);
-        DatabasePopulateService.main(new String[0]);
+//        DatabaseInitService.main(new String[0]);
+//        DatabasePopulateService.main(new String[0]);
         databaseQueryService = new DatabaseQueryService();
     }
 
